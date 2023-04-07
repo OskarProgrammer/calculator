@@ -38,3 +38,5 @@ openNav.addEventListener('click', openNavigation)
 closeNav.addEventListener('click', closeNavigation)
 advanceCalcBtn.addEventListener('click', chooseAdvanced)
 simpleCalcBtn.addEventListener('click', chooseSimple)
+
+#something to add
