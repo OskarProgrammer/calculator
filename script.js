@@ -33,7 +33,7 @@ document.onkeydown = function (evt) {
 		openNav.style.left = '-20px'
 	}
 }
-
+//something
 openNav.addEventListener('click', openNavigation)
 closeNav.addEventListener('click', closeNavigation)
 advanceCalcBtn.addEventListener('click', chooseAdvanced)
