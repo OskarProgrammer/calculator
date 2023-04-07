@@ -33,6 +33,7 @@ header {
 }
 
 header h1 {
+	position: relative;
 	display: inline-block;
 	color: rgba(34, 25, 37, 0.9);
 	box-shadow: 10px 10px 10px rgba(124, 122, 125, 0.608);
@@ -50,6 +51,7 @@ header h1:hover {
 }
 
 main {
+	top:100px;
 	height: 90%;
 	text-align: center;
 }
@@ -141,7 +143,7 @@ main button:active {
 }
 
 .result {
-	position: relative;
+
 	width: 25%;
 	height: 40px;
 	padding: 10px;
