@@ -102,6 +102,21 @@ main button:active {
 	border: solid 1px rgba(77, 77, 74, 0.721);
 	border-radius: 25px;
 }
+.programistic {
+	position: absolute;
+	backface-visibility: hidden;
+	left: 525px;
+	transform: preserve-3d(300px);
+	transform: rotateY(90deg);
+	width: 30%;
+	height: 100%;
+	display: inline-block;
+	margin-top: 10px;
+	background: linear-gradient(120deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+	backdrop-filter: blur(50px);
+	border: solid 1px rgba(77, 77, 74, 0.721);
+	border-radius: 25px;
+}
 
 .down {
 	position: relative;
@@ -113,15 +128,20 @@ main button:active {
 .active {
 	transform: rotateY(180deg);
 }
-
+.activeProgramistic {
+	transform: rotateY(-90deg);
+}
 
 .up {
+	position: relative;
+	transform-style: preserve-3d;
 	width: 99%;
+	transition: 1s;
 	text-align: center;
 }
 
 .result {
-	position: flex;
+	position: relative;
 	width: 25%;
 	height: 40px;
 	padding: 10px;
@@ -131,8 +151,37 @@ main button:active {
 	box-shadow: 0px 10px 10px rgba(124, 122, 125, 0.608);
 	border: solid 1px rgb(99, 97, 97, 0.608);
 	border-radius: 15px;
-
 	transition-duration: 1s;
+	backface-visibility: hidden;
+}
+
+.programisticResult {
+	position: absolute;
+	width: 25%;
+	height: 40px;
+	padding: 10px;
+	left: 550px;
+	display: inline-block;
+	transform: rotateX(180deg);
+	background: linear-gradient(120deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+	backdrop-filter: blur(100px);
+	box-shadow: 0px 10px 10px rgba(124, 122, 125, 0.608);
+	border: solid 1px rgb(99, 97, 97, 0.608);
+	border-radius: 15px;
+	backface-visibility: hidden;
+	transition-duration: 1s;
+}
+.programisticResult:hover {
+	color: black;
+	background-color: bisque;
+	border: solid 1px rgba(106, 96, 96, 0.608);
+	box-shadow: 2px 2px 10px rgba(106, 96, 96, 0.608);
+	backdrop-filter: blur(100px);
+	transition-duration: 1s;
+}
+
+.activeResult {
+	transform: rotateX(180deg);
 }
 
 .result:hover {
