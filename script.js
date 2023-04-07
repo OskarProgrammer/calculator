@@ -6,8 +6,12 @@ const advanceCalcBtn = document.querySelector('.levelCalc')
 const simpleCalcBtn = document.querySelector('.simpleCalc')
 const proCalcBtn = document.querySelector('.proCalc')
 const board = document.querySelector('.down')
-// const buttons = querySelectorAll("")
+const buttonsAdvanced = document.querySelectorAll('.advanced button')
+const buttonsSimple = document.querySelectorAll('.board button')
 const upward = document.querySelector('.up')
+let result = document.querySelector('.result')
+let i = 0
+let answer
 
 const openNavigation = () => {
 	nav.style.left = '10px'
@@ -44,8 +48,83 @@ document.onkeydown = function (evt) {
 	}
 }
 
+const resultUpdate = e => {
+	console.log('something')
+	console.log(result)
+	result.textContent += e.textContent
+}
 openNav.addEventListener('click', openNavigation)
 closeNav.addEventListener('click', closeNavigation)
 advanceCalcBtn.addEventListener('click', chooseAdvanced)
 simpleCalcBtn.addEventListener('click', chooseSimple)
 proCalcBtn.addEventListener('click', chooseProgramistic)
+for (let button of buttonsAdvanced) {
+	button.addEventListener('click', () => {
+		if (button.value == 'clear') {
+			result.textContent = ' '
+		} else if (button.value == 'back') {
+			let wartosc = result.textContent
+			let arr = wartosc.split('')
+			let wartosc1 = Array.from(arr)
+			wartosc1.pop()
+			result.textContent = wartosc1.join('')
+		} else if (button.value == 'last') {
+			result.textContent += answer
+		} else if (button.value == 'equal') {
+			try {
+				result.textContent = eval(result.textContent)
+				i += 1
+				answer = result.textContent
+			} catch (SyntaxError) {
+				result.textContent = 'SYNTAX ERROR'
+				i += 1
+			}
+			if (result.textContent == 'Infinity') {
+				result.textContent = 'MATH ERROR'
+				i += 1
+			}
+		} else {
+			if (i == 1 || i == 2) {
+				result.textContent = button.textContent
+				i = 0
+			} else {
+				result.textContent += button.textContent
+			}
+		}
+	})
+}
+for (let button of buttonsSimple) {
+	button.addEventListener('click', () => {
+		if (button.value == 'clear') {
+			result.textContent = ' '
+		} else if (button.value == 'back') {
+			let wartosc = result.textContent
+			let arr = wartosc.split('')
+			let wartosc1 = Array.from(arr)
+			wartosc1.pop()
+			result.textContent = wartosc1.join('')
+		} else if (button.value == 'last') {
+			result.textContent += answer
+		} else if (button.value == 'equal') {
+			try {
+				result.textContent = eval(result.textContent)
+				i += 1
+				answer = result.textContent
+			} catch (SyntaxError) {
+				result.textContent = 'SYNTAX ERROR'
+				i += 1
+			}
+			if (result.textContent == 'Infinity') {
+				result.textContent = 'MATH ERROR'
+				i += 1
+			}
+		} else {
+			if (i == 1 || i == 2) {
+				result.textContent = button.textContent
+				i = 0
+			} else {
+				result.textContent += button.textContent
+			}
+		}
+	})
+}
