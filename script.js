@@ -81,10 +81,11 @@ for (let button of buttonsAdvanced) {
 			}
 			if (result.textContent == 'Infinity') {
 				result.textContent = 'MATH ERROR'
+				answer = ''
 				i += 1
 			}
 		} else {
-			if (i == 1 || i == 2) {
+			if (i != 0) {
 				result.textContent = button.textContent
 				i = 0
 			} else {
@@ -116,10 +117,11 @@ for (let button of buttonsSimple) {
 			}
 			if (result.textContent == 'Infinity') {
 				result.textContent = 'MATH ERROR'
+				answer = ''
 				i += 1
 			}
 		} else {
-			if (i == 1 || i == 2) {
+			if (i != 0) {
 				result.textContent = button.textContent
 				i = 0
 			} else {
