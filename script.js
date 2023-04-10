@@ -9,6 +9,20 @@ const board = document.querySelector('.down')
 const buttonsAdvanced = document.querySelectorAll('.advanced button')
 const buttonsSimple = document.querySelectorAll('.board button')
 const upward = document.querySelector('.up')
+
+//programistic calculator buttons
+const decimalBtn = document.querySelector('.dec')
+const binaryBtn = document.querySelector('.bin')
+const octagonalBtn = document.querySelector('.oct')
+const hexagonalBtn = document.querySelector('.hex')
+//programistic calculator text variables
+const choiceText = document.querySelector('.option')
+const result1 = document.querySelector('.result1')
+const result2 = document.querySelector('.result2')
+const result3 = document.querySelector('.result3')
+//programistic calculator input value
+const inputProgramistic = document.querySelector('.value input')
+
 let result = document.querySelector('.result')
 let i = 0
 let answer
@@ -130,3 +144,90 @@ for (let button of buttonsSimple) {
 		}
 	})
 }
+const convertToDec = (liczba, system) => {
+	if (parseInt(liczba.toString()) == 0) {
+		return 0
+	}
+
+	if (!Number.isInteger(system) && (system != 2 || system != 8 || system != 10 || system != 16)) {
+		return ''
+	}
+
+	if (!Number.isInteger(liczba)) {
+		return ''
+	}
+
+	var liczba_system = ''
+
+	var cyfry_hex = {
+		10: 'A',
+		11: 'B',
+		12: 'C',
+		13: 'D',
+		14: 'E',
+		15: 'F',
+	}
+
+	while (liczba > 0) {
+		var reszta = liczba % system
+		if (system == 16 && reszta > 9) {
+			reszta = cyfry_hex[reszta]
+		}
+		liczba_system = reszta.toString() + liczba_system
+		liczba = Math.floor(liczba / system)
+	}
+
+	return liczba_system
+}
+decimalBtn.addEventListener('click', () => {
+	inputProgramistic.value = ''
+	choiceText.textContent = 'DEC: '
+	result1.textContent = 'BIN: '
+	result2.textContent = 'OCT: '
+	result3.textContent = 'HEX: '
+})
+binaryBtn.addEventListener('click', () => {
+	inputProgramistic.value = ''
+	choiceText.textContent = 'BIN: '
+	result1.textContent = 'DEC: '
+	result2.textContent = 'OCT: '
+	result3.textContent = 'HEX: '
+})
+octagonalBtn.addEventListener('click', () => {
+	inputProgramistic.value = ''
+	choiceText.textContent = 'OCT: '
+	result1.textContent = 'DEC: '
+	result2.textContent = 'BIN: '
+	result3.textContent = 'HEX: '
+})
+hexagonalBtn.addEventListener('click', () => {
+	inputProgramistic.value = ''
+	choiceText.textContent = 'HEX: '
+	result1.textContent = 'DEC: '
+	result2.textContent = 'BIN: '
+	result3.textContent = 'OCT: '
+})
+
+inputProgramistic.addEventListener('keyup', () => {
+	const content = choiceText.textContent
+	if (content.includes('DEC')) {
+		result1.textContent = 'BIN: ' + convertToDec(parseInt(inputProgramistic.value), 2)
+		result2.textContent = 'OCT: ' + convertToDec(parseInt(inputProgramistic.value), 8)
+		result3.textContent = 'HEX: ' + convertToDec(parseInt(inputProgramistic.value), 16)
+	} else if (content.includes('BIN')) {
+		const dec = parseInt(inputProgramistic.value, 2)
+		result1.textContent = 'DEC: ' + dec
+		result2.textContent = 'OCT: ' + convertToDec(parseInt(dec), 8)
+		result3.textContent = 'HEX: ' + convertToDec(parseInt(dec), 16)
+	} else if (content.includes('OCT')) {
+		const dec = parseInt(inputProgramistic.value, 8)
+		result1.textContent = 'DEC: ' + dec
+		result2.textContent = 'BIN: ' + convertToDec(parseInt(dec), 2)
+		result3.textContent = 'HEX: ' + convertToDec(parseInt(dec), 16)
+	} else {
+		const dec = parseInt(inputProgramistic.value, 16)
+		result1.textContent = 'DEC: ' + dec
+		result2.textContent = 'BIN: ' + convertToDec(parseInt(dec), 2)
+		result3.textContent = 'OCT: ' + convertToDec(parseInt(dec), 8)
+	}
+})

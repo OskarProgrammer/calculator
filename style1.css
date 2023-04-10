@@ -277,7 +277,7 @@ nav button:hover {
 	width: 50%;
 	height: 100%;
 	float: left;
-	padding-top: 15px;
+
 	padding-left: 10px;
 	font-weight: bold;
 	text-align: left;
@@ -302,4 +302,34 @@ nav button:hover {
 	width: 100%;
 	padding-left: 30px;
 	text-align: left;
+}
+
+.programistic button {
+	width: 93%;
+	height: 22%;
+}
+
+.option {
+	float: left;
+	padding-top: 18px;
+	width: 50%;
+	height: 50%;
+}
+.value {
+	float: right;
+	padding-top: 10px;
+	width: 50%;
+	height: 50%;
+}
+
+.value input{
+	position: absolute;
+	left: 65px;
+	text-decoration: none;
+	color:black;
+	background: linear-gradient(120deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+	height: 34px;
+	width:120px;
+	border: none;
+
 }
